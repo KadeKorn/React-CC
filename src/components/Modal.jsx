@@ -1,8 +1,8 @@
-import './Modal.css'
+import "./Modal.css";
 
 function Modal() {
   return (
-    <div> 
+    <>
       <div className="modal">
         <p className="modal__title">Are you sure?</p>
         <div className="modal__buttons">
@@ -11,7 +11,7 @@ function Modal() {
         </div>
       </div>
       <div className="backdrop" />
-    </div>
+    </>
   );
 }
 

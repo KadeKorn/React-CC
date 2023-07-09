@@ -3,9 +3,22 @@ import Todo from "./components/Todo";
 import Title from "./components/Title";
 import Modal from "./components/Modal.jsx";
 import React, { useState } from "react";
-import Counter from "./components/Counter";
+// import Counter from "./components/Counter";
 function App() {
   const [showModal, setShowModal] = useState(false);
+
+  function onTodoDelete() {
+    setShowModal(true);
+    console.log("onTododelete()");
+  }
+  function modalCancel() {
+    setShowModal(false);
+    console.log("ModalCancel");
+  }
+  function modalConfirm() {
+    setShowModal(false);
+    console.log("ModalConfirm");
+  }
 
   return (
     <div>
@@ -19,15 +32,21 @@ function App() {
         />
         <button onClick={() => setShowModal(true)}>Add todo</button>
       </div>
-      <Counter />
       <div className="Todo__wrapper">
-        <Todo title="Finish Frontend Simplifed" />
-        <Todo title="Finish Interview Section" />
-        <Todo title="Land a 100k Job" />
+        <Todo onTodoDelete={onTodoDelete} title="Finish Frontend Simplifed" />
+        <Todo onTodoDelete={onTodoDelete} title="Finish Interview Section" />
+        <Todo onTodoDelete={onTodoDelete} title="Land a 100k Job" />
       </div>
-      {showModal ? <Modal title="Confirm Delete?" /> : <></>}
+      {showModal ? (
+        <Modal
+          modalCancel={modalCancel}
+          modalConfirm={modalConfirm}
+          title="Confirm Delete?"
+        />
+      ) : (
+        <></>
+      )}
       {/*short hand is isModalOpen && <Modal title="confirm delete" /> */}
-      
     </div>
   );
 }

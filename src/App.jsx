@@ -2,8 +2,17 @@ import "./App.css";
 import Todo from "./components/Todo";
 import Title from "./components/Title";
 import Modal from "./components/Modal.jsx";
+import React, { useState } from "react";
+
 
 function App() {
+  let isModalOpen = false;
+
+  function toggleModal() {
+    isModalOpen = !isModalOpen;
+    console.log(isModalOpen);
+  }
+
   return (
     <div>
       <Title />
@@ -14,14 +23,15 @@ function App() {
             console.log(event.target.value);
           }}
         />
-        <button>Add todo</button>
+        <button onClick={toggleModal} >Add todo</button>
       </div>
       <div className="Todo__wrapper">
         <Todo title="Finish Frontend Simplifed" />
         <Todo title="Finish Interview Section" />
         <Todo title="Land a 100k Job" />
       </div>
-      <Modal title="Are you sure?" />
+      {isModalOpen ? <Modal title="Confirm Delete?" /> : <></>}
+      {/*short hand is isModalOpen && <Modal title="confirm delete" /> */}
     </div>
   );
 }

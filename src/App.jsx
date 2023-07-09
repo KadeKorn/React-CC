@@ -7,23 +7,21 @@ function App() {
   return (
     <div>
       <Title />
-      <div className="Todo__wrapper">
-        <Todo 
-        title="Finish Frontend Simplifed"
-        paragraph="Code along with Frontend Simplified Step by step"
+      <div>
+        <input
+          type="text"
+          onChange={(event) => {
+            console.log(event.target.value);
+          }}
         />
-        <Todo 
-        title="Finish Interview Section"
-        paragraph="I am happy ot be coding and preping for interviews"
-        />
-        <Todo 
-        title="Land a 100k Job" 
-        paragraph="Already there, but I want to double it"
-        />
+        <button>Add todo</button>
       </div>
-      <Modal
-      title="Are you sure?"
-      />
+      <div className="Todo__wrapper">
+        <Todo title="Finish Frontend Simplifed" />
+        <Todo title="Finish Interview Section" />
+        <Todo title="Land a 100k Job" />
+      </div>
+      <Modal title="Are you sure?" />
     </div>
   );
 }

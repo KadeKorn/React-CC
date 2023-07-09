@@ -6,12 +6,7 @@ import React, { useState } from "react";
 
 
 function App() {
-  let isModalOpen = false;
-
-  function toggleModal() {
-    isModalOpen = !isModalOpen;
-    console.log(isModalOpen);
-  }
+  const [showModal, setShowModal] = useState(false)
 
   return (
     <div>
@@ -23,14 +18,14 @@ function App() {
             console.log(event.target.value);
           }}
         />
-        <button onClick={toggleModal} >Add todo</button>
+        <button onClick={() => setShowModal(true)}>Add todo</button>
       </div>
       <div className="Todo__wrapper">
         <Todo title="Finish Frontend Simplifed" />
         <Todo title="Finish Interview Section" />
         <Todo title="Land a 100k Job" />
       </div>
-      {isModalOpen ? <Modal title="Confirm Delete?" /> : <></>}
+      {showModal ? <Modal title="Confirm Delete?" /> : <></>}
       {/*short hand is isModalOpen && <Modal title="confirm delete" /> */}
     </div>
   );

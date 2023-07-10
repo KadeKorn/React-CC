@@ -1,67 +1,28 @@
 import "./App.css";
-import Todo from "./components/Todo";
-import Title from "./components/Title";
-import Modal from "./components/Modal.jsx";
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
+
 import React, { useState, useEffect } from "react";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 // import Counter from "./components/Counter";
+
 function App() {
-  const [showModal, setShowModal] = useState(false);
-
-  function onTodoDelete() {
-    setShowModal(true);
-    console.log("onTododelete()");
-  }
-  function modalCancel() {
-    setShowModal(false);
-    console.log("ModalCancel");
-  }
-  function modalConfirm() {
-    setShowModal(false);
-    console.log("ModalConfirm");
-  }
-
-    useEffect( () => {
-      console.log('on mount')
-    }, [])
-
-    useEffect( () => {
-      console.log(`on mount AND on ${showModal} change`)
-    }, [showModal])
-
-    useEffect( () => {
-      console.log('Every Render')
-    })
-
-
-  return (
-    <div>
-      <Title />
-      <div>
-        <input
-          type="text"
-          onChange={(event) => {
-            console.log(event.target.value);
-          }}
-        />
-        <button onClick={() => setShowModal(true)}>Add todo</button>
-      </div>
-      <div className="Todo__wrapper">
-        <Todo onTodoDelete={onTodoDelete} title="Finish Frontend Simplifed" />
-        <Todo onTodoDelete={onTodoDelete} title="Finish Interview Section" />
-        <Todo onTodoDelete={onTodoDelete} title="Land a 100k Job" />
-      </div>
-      {showModal ? (
-        <Modal
-          modalCancel={modalCancel}
-          modalConfirm={modalConfirm}
-          title="Confirm Delete?"
-        />
-      ) : (
-        <></>
-      )}
-      {/*short hand is isModalOpen && <Modal title="confirm delete" /> */}
-    </div>
-  );
+  return (<div>
+    <Router>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact  />} />
+      </Routes>
+    </Router>
+  </div>
+  )
 }
 
 export default App;

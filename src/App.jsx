@@ -5,9 +5,9 @@ import Nav from "./components/Nav.jsx";
 import Home from "./pages/Home";
 // import About from "./pages/About";
 // import Contact from "./pages/Contact";
-import Users from "./pages/User.jsx";
+import Users from "./pages/Users.jsx";
 // import Counter from "./components/Counter";
-
+import User from "./components/User"
 function App() {
   return (
     <Router>

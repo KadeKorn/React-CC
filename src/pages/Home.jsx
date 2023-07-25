@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import User from "./components/User.jsx"
-
+import User from "../components/User.jsx";
 
 function Home() {
   const [users, setUsers] = useState([]);
@@ -20,14 +19,26 @@ function Home() {
     }, 2000);
   }, []);
 
-  const pixels = "3px";
+  //const pixels = "3px";
   return (
     <>
       {users.map((user) => (
-        <User id={user.id} name={user.name} email={user.email} username={user.username} />
+        <User
+          key={user.id}
+          id={user.id}
+          name={user.name}
+          email={user.email}
+          username={user.name}
+        />
       ))}
     </>
   );
 }
 
 export default Home;
+// <div key={user.id} style={{ border: `${pixels} solid black` }}>
+//   <div>{user?.id}</div>
+//   <div>{user?.name}</div>
+//   <div>{user?.email}</div>
+//   <div>{user?.username}</div>
+// </div>
